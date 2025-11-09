@@ -99,7 +99,7 @@ public class ProductoController {
         }
 
         if (productos.isEmpty()) {
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok(List.of());
         }
         return ResponseEntity.ok(productos);
     }
