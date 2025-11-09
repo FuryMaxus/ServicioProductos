@@ -33,36 +33,7 @@ public class ProductoController {
             @ApiResponse(responseCode = "200",
                     description = "Productos listados exitosamente",
                     content = @Content(mediaType = "application/json",
-                            array = @ArraySchema
-                                    (schema = @Schema(implementation = Producto.class)),
-                            examples = @ExampleObject(
-                                    name = "Lista de Ejemplo",
-                                    description = "Ejemplo de listado de los productos, sin usar filtros",
-                                    value = """
-                                            [
-                                                {
-                                                    "id": 1,
-                                                    "prodCode": 1,
-                                                    "nombre": "Hamburguesa Vacuno 100g",
-                                                    "marca": "PF",
-                                                    "precio": 750,
-                                                    "categoria": "hamburguesas",
-                                                    "esEco": false,
-                                                    "stock": 134
-                                                },
-                                                {
-                                                    "id": 2,
-                                                    "prodCode": 2,
-                                                    "nombre": "yoghurt chirimolla",
-                                                    "marca": "Colun",
-                                                    "precio": 326,
-                                                    "categoria": "Lacteos y Quesos",
-                                                    "esEco": true,
-                                                    "stock": 456
-                                                }
-                                            ]
-                                            """
-                            ))
+                            array = @ArraySchema(schema = @Schema(implementation = Producto.class)))
             ),
             @ApiResponse(responseCode = "204", description = "No se encontraron Productos",
                     content = @Content(schema = @Schema(hidden = true))
@@ -111,23 +82,7 @@ public class ProductoController {
             @ApiResponse(responseCode = "200",
             description = "Producto encontrado",
             content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Producto.class),
-                    examples = @ExampleObject(
-                            name = "Producto de Ejemplo",
-                            description = "Resultado de ejemplo de la operacion, con id = 1",
-                            value = """
-                                    {
-                                        "id": 1,
-                                        "prodCode": 1,
-                                        "nombre": "Hamburguesa Vacuno 100g",
-                                        "marca": "PF",
-                                        "precio": 750,
-                                        "categoria": "hamburguesas",
-                                        "esEco": false,
-                                        "stock": 134
-                                    }
-                                    """
-                    ))
+                    schema = @Schema(implementation = Producto.class))
             ),
             @ApiResponse(responseCode = "404",
                     description = "No se encontro el Producto",
@@ -151,7 +106,6 @@ public class ProductoController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
     @PostMapping
     @Operation(summary = "Agregar un Producto",
@@ -210,9 +164,9 @@ public class ProductoController {
         try {
             Producto pro = productoService.findById(id);
             pro.setId(producto.getId());
-            pro.setCategoria(producto.getCategoria());
-            pro.setNombre(producto.getNombre());
-            pro.setPrecio(producto.getPrecio());
+            pro.setCategory(producto.getCategory());
+            pro.setName(producto.getName());
+            pro.setPrice(producto.getPrice());
             pro.setImgUrl(producto.getImgUrl());
             pro.setProductCondition(producto.getProductCondition());
             productoService.save(pro);

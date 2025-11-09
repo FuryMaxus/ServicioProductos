@@ -12,13 +12,13 @@ import java.util.List;
 public interface ProductoRepository extends JpaRepository<Producto,Long> {
 
     @Query("SELECT p FROM Producto p WHERE " +
-            "(:categoria IS NULL OR p.categoria = :categoria) AND " +
-            "(:marca IS NULL OR p.marca = :marca) AND " +
+            "(:category IS NULL OR p.category = :category) AND " +
+            "(:brand IS NULL OR p.brand = :brand) AND " +
             "(:productCondition IS NULL OR p.productCondition = :productCondition)"
     )
     List<Producto> buscarPorFiltro(
-            @Param("categoria") String categoria,
-            @Param("marca") String marca,
+            @Param("category") String categoria,
+            @Param("brand") String marca,
             @Param("productCondition") String condition
     );
 }

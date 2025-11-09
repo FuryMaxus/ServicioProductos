@@ -5,7 +5,6 @@ import com.ecoMarket.servicioProductos.repository.ProductoRepository;
 import com.ecoMarket.servicioProductos.service.ProductoService;
 import org.junit.jupiter.api.Test;
 
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -55,7 +54,7 @@ public class ProductoServiceTest {
         when(productoRepository.save(producto)).thenReturn(producto);
         Producto saved = productoService.save(producto);
         assertNotNull(saved);
-        assertEquals("Caja",saved.getNombre());
+        assertEquals("Caja",saved.getName());
     }
 
     @Test
