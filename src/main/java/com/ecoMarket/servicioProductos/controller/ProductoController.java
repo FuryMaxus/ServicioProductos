@@ -134,7 +134,7 @@ public class ProductoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(productoNuevo);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('ROL_EMPLEADO', 'ROL_ADMIN')")
     @Operation(summary = "Modificar un producto",
             description = "Altera las propiedades del producto rescatado segun la id dada")
