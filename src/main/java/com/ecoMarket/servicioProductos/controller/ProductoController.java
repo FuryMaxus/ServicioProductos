@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -154,6 +155,7 @@ public class ProductoController {
 
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ROL_EMPLEADO', 'ROL_ADMIN')")
     @Operation(summary = "Agregar un Producto",
             description = "Agrega un nuevo producto segun los datos ingresados")
     @ApiResponses(value = {
@@ -179,6 +181,7 @@ public class ProductoController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyAuthority('ROL_EMPLEADO', 'ROL_ADMIN')")
     @Operation(summary = "Modificar un producto",
             description = "Altera las propiedades del producto rescatado segun la id dada")
     @ApiResponses(value = {
@@ -223,6 +226,7 @@ public class ProductoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ROL_EMPLEADO', 'ROL_ADMIN')")
     @Operation(summary = "Eliminar un producto por id",
             description = "Elimina el producto seleccionado segun la id dada")
     @ApiResponses(value = {
