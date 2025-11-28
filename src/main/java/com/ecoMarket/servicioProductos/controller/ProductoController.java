@@ -175,6 +175,8 @@ public class ProductoController {
             productoService.save(pro);
             return ResponseEntity.ok(producto);
         } catch ( Exception e ) {
+            e.printStackTrace();
+            System.err.println("ERROR CRÍTICO AL ACTUALIZAR: " + e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }
