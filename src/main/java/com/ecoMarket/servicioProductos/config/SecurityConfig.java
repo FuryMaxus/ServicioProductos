@@ -20,7 +20,7 @@ import javax.crypto.spec.SecretKeySpec;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class SecuriryConfig {
+public class SecurityConfig {
 
     @Value("${jwt.secret}")
     private String secretKey;
